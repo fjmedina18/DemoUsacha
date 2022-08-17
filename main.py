@@ -35,6 +35,34 @@ def top_system():
     requests.packages.urllib3.disable_warnings()
     respuesta = requests.get(sandbox+"/api/class/topSystem.json", headers=cabecera, cookies= galleta, verify=False)
     for i in range(0, 4):
+        ip_local = respuesta.json()["imdata"][i]["topSystem"]["attributes"]["address"]
+        print(ip_local)
+
+
+top_system()
+def top_system():
+    cabecera = {
+        "Content-Type": "application/json"
+    }
+    galleta = {
+        "APIC-Cookie": obtener_token(conf.usuario, conf.clave)
+    }
+    requests.packages.urllib3.disable_warnings()
+    respuesta = requests.get(sandbox+"/api/class/topSystem.json", headers=cabecera, cookies= galleta, verify=False)
+    for i in range(0, 4):
         serial = respuesta.json()["imdata"][i]["topSystem"]["attributes"]["serial"]
         print(serial)
+top_system()
+def top_system():
+    cabecera = {
+        "Content-Type": "application/json"
+    }
+    galleta = {
+        "APIC-Cookie": obtener_token(conf.usuario, conf.clave)
+    }
+    requests.packages.urllib3.disable_warnings()
+    respuesta = requests.get(sandbox+"/api/class/topSystem.json", headers=cabecera, cookies= galleta, verify=False)
+    fabricante_mac = respuesta.json()["imdata"][0]["topSystem"]["attributes"]["fabricMAC"]
+    print(fabricante_mac)
+
 top_system()
